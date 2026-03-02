@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Dynamo Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fas fa-university"></i>
+                Digital Dynamo Hub
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="active">Archive</a>
+                <a href="admin.html">Admin Upload</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- Sidebar Filters -->
+        <aside class="filters">
+            <div class="filter-group">
+                <h3>Language</h3>
+                <div id="language-filters">
+                    <!-- Javascript will populate this -->
+                    <span class="filter-option" onclick="filterBooks('language', 'English')">English</span>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Subject</h3>
+                <div id="subject-filters">
+                    <!-- Javascript will populate this -->
+                    <span class="filter-option" onclick="filterBooks('subject', 'Science')">HTML</span>
+                    <span class="filter-option" onclick="filterBooks('subject', 'History')">HTML & CSS</span>
+                    <span class="filter-option" onclick="filterBooks('subject', 'Philosophy')">JavaScript</span>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Year</h3>
+                <div id="year-filters">
+                    <span class="filter-option" onclick="filterBooks('year', '2023')">2023</span>
+                    <span class="filter-option" onclick="filterBooks('year', '2022')">2022</span>
+                    <span class="filter-option" onclick="filterBooks('year', '2021')">2021</span>
+                </div>
+            </div>
+
+            <button class="btn" onclick="resetFilters()" style="width: 100%; font-size: 0.9rem; padding: 0.5rem;">Reset
+                Filters</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search for books, authors...">
+                    <button class="search-btn" onclick="executeSearch()"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+
+            <div id="bookGrid" class="book-grid">
+                <!-- Books will be injected here -->
+                <div class="book-card loading">
+                    <div class="card-content">
+                        <h3>Loading Library...</h3>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <img src="" alt="Cover" id="modalImage" class="modal-image">
+            <div class="modal-details">
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+                <h2 id="modalTitle" class="modal-title">Book Title</h2>
+                <h4 id="modalAuthor" class="modal-author">by Author Name</h4>
+                <div class="modal-meta" style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">
+                    <span id="modalYear">2021</span> • <span id="modalLanguage">English</span>
+                </div>
+                <p id="modalDesc" class="modal-desc">Description goes here...</p>
+                <div id="modalTags" style="margin-bottom: 2rem;"></div>
+                <a href="#" id="downloadBtn" class="btn" target="_blank" download>
+                    <i class="fas fa-download"></i> Download / Read
+                </a>
+            </div>
+        </div>
+    </div>
+    <footer>
+
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
