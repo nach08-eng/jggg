@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Upload - Digital Library</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fas fa-university"></i>
+                Digital Library Archive
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Archive</a>
+                <a href="admin.html" class="active">Admin Upload</a>
+                <a href="#" onclick="logout()" style="color: #e63946;">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container" style="display: block;"> <!-- Override grid layout for single column -->
+        <div class="upload-container">
+            <h2 style="margin-bottom: 2rem; color: var(--primary-color);">Upload New Book</h2>
+
+            <form id="uploadForm" onsubmit="handleUpload(event)">
+                <div class="form-group">
+                    <label>Book Title</label>
+                    <input type="text" name="title" required placeholder="Enter book title">
+                </div>
+
+                <div class="form-group">
+                    <label>Author</label>
+                    <input type="text" name="author" required placeholder="Author name">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Year</label>
+                        <input type="number" name="year" placeholder="YYYY">
+                    </div>
+                    <div class="form-group">
+                        <label>Language</label>
+                        <select name="language">
+                            <option value="English">English</option>
+                            <option value="Spanish">Spanish</option>
+                            <option value="French">French</option>
+                            <option value="Tamil">Tamil</option>
+                            <option value="German">German</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Subjects / Tags (comma separated)</label>
+                    <input type="text" name="subjects" placeholder="e.g. Science, Philosophy, text-book">
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="description" rows="5" placeholder="Book description..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Cover Image</label>
+                    <input type="file" name="coverImage" accept="image/*">
+                </div>
+
+                <div class="form-group">
+                    <label>Book File (PDF/EPUB)</label>
+                    <input type="file" name="bookFile" accept=".pdf,.epub" required>
+                </div>
+
+                <button type="submit" class="btn" id="submitBtn">Upload to Archive</button>
+            </form>
+            <p id="message" style="margin-top: 1rem; text-align: center;"></p>
+        </div>
+
+        <div class="upload-container" style="margin-top: 2rem;">
+            <h2 style="margin-bottom: 2rem; color: var(--primary-color);">Manage Existing Books</h2>
+            <div id="adminBookList" class="admin-book-list">
+                <!-- Books will be listed here with delete buttons -->
+                <p style="text-align: center; color: #666;">Loading books...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
